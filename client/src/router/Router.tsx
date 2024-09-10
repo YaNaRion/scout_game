@@ -1,24 +1,23 @@
-import * as React from "react";
-import { createRoot } from "react-dom/client";
-import {
-    createBrowserRouter,
-    RouterProvider,
-    Route,
-    Link,
-    createRoutesFromElements,
-} from "react-router-dom";
-import Root from "../routes/root";
+import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { Quotes } from "../features/quotes/Quotes";
+import { Counter } from "../features/counter/Counter";
 
-export const RouterNested = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<Root />}>
-            <div>hello world</div>
-        </Route>
+const HelloWorld = () => {
+    return (
+        <div>
+            Hello World
+        </div >
     )
-)
+}
 
-
-createRoot(document.getElementById("root")).render(
-    <RouterProvider router={RouterNested} />
+const Router = createBrowserRouter(
+    createRoutesFromElements(
+        <>
+            <Route path="/" Component={HelloWorld} />
+            <Route path="quote" Component={Quotes} />
+            <Route path="counter" Component={Counter} />
+        </>
+    )
 );
 
+export default Router
